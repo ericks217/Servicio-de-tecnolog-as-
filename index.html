@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Tecnológico</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+        body {font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:#f4f4f9;color:#333;}
+        nav {position:fixed;width:100%;background:#0077ff;display:flex;justify-content:center;gap:30px;
+             padding:15px 0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+        nav a {color:#fff;text-decoration:none;font-weight:bold;transition:transform 0.3s;}
+        nav a:hover {transform:scale(1.1);}
+        section {padding:100px 20px;min-height:100vh;display:flex;flex-direction:column;
+                 justify-content:center;align-items:center;text-align:center;}
+        .inicio {background:linear-gradient(120deg,#0077ff,#00c3ff);color:white;animation:fadeIn 2s ease;}
+        .servicios, .proyectos, .contacto {opacity:0;transform:translateY(50px);transition:all 1s ease;}
+        .visible {opacity:1;transform:translateY(0);}
+        .card {background:white;margin:20px;padding:20px;border-radius:15px;
+               box-shadow:0 4px 20px rgba(0,0,0,0.1);transition:transform 0.3s;}
+        .card:hover {transform:translateY(-5px);}
+        form input, form textarea {padding:10px;margin:10px;width:300px;border:2px solid #0077ff;
+                                   border-radius:8px;}
+        form button {padding:10px 20px;background:#0077ff;color:white;border:none;
+                     border-radius:8px;cursor:pointer;transition:background 0.3s;}
+        form button:hover {background:#005ec2;}
+        @keyframes fadeIn {from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:scale(1);}}
+    </style>
+</head>
+<body>
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+<section id="inicio" class="inicio">
+    <h1>¡Bienvenido a Servicio Tecnológico!</h1>
+    <p>Soluciones modernas, eficientes y creativas para tus necesidades digitales.</p>
+</section>
+<section id="servicios" class="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="card">Diseño Web Profesional</div>
+    <div class="card">Desarrollo Front-End</div>
+    <div class="card">Optimización y SEO</div>
+    <div class="card">Edición de Video</div>
+    <div class="card">Community Manager</div>
+    <div class="card">Marketing Digital</div>
+    <div class="card">¡Y mucho más!</div>
+</section>
+<section id="proyectos" class="proyectos">
+    <h2>Proyectos Destacados</h2>
+    <div class="card">Landing Page Animada</div>
+    <div class="card">Tienda Online Personalizada</div>
+    <div class="card">Sitios Responsive</div>
+    <div class="card">Aplicaciones Web Modernas</div>
+</section>
+<section id="contacto" class="contacto">
+    <h2>¡Hablemos!</h2>
+    <p>Comunícate con nosotros por WhatsApp: <a href="https://wa.me/543883112606" target="_blank">3883112606</a></p>
+    <form>
+        <input type="text" placeholder="Tu Nombre" required><br>
+        <input type="email" placeholder="Tu Email" required><br>
+        <textarea rows="4" placeholder="Tu Mensaje"></textarea><br>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.servicios, .proyectos, .contacto').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+</body>
+</html>
